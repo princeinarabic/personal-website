@@ -57,6 +57,16 @@ body::after {
   transform: translate(calc(var(--mx) * -1px), calc(var(--my) * -1px));
 }
 
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
 .page {
   min-height: 100vh;
   display: flex;
@@ -89,6 +99,22 @@ h1 {
   font-size: clamp(3rem, 8vw, 5.5rem);
   letter-spacing: -0.03em;
   line-height: 1;
+  background: linear-gradient(100deg, var(--text) 20%, var(--accent) 50%, var(--text) 80%);
+  background-size: 200% auto;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 7s ease-in-out infinite;
+}
+
+@keyframes shine {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 .role {
@@ -172,6 +198,11 @@ h1 {
   body::after {
     transition: none;
     transform: none !important;
+  }
+
+  h1 {
+    animation: none;
+    background-position: 0% 50%;
   }
 }
 

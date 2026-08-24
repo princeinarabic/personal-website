@@ -20,4 +20,36 @@
       ticking = false;
     });
   });
+
+  var magnetStrength = 0.25;
+  var magnetMax = 8;
+
+  document.querySelectorAll(".pill").forEach(function (pill) {
+    var pillTicking = false;
+    var pendingEvent = null;
+
+    pill.addEventListener("mousemove", function (event) {
+      pendingEvent = event;
+      if (pillTicking) return;
+      pillTicking = true;
+
+      requestAnimationFrame(function () {
+        var rect = pill.getBoundingClientRect();
+        var relX = pendingEvent.clientX - rect.left - rect.width / 2;
+        var relY = pendingEvent.clientY - rect.top - rect.height / 2;
+
+        var dx = Math.max(-magnetMax, Math.min(magnetMax, relX * magnetStrength));
+        var dy = Math.max(-magnetMax, Math.min(magnetMax, relY * magnetStrength));
+
+        pill.style.transform =
+          "translate(" + dx.toFixed(1) + "px, " + (dy - 4).toFixed(1) + "px) scale(1.05)";
+
+        pillTicking = false;
+      });
+    });
+
+    pill.addEventListener("mouseleave", function () {
+      pill.style.transform = "";
+    });
+  });
 })();
