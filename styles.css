@@ -126,6 +126,16 @@ h1 {
   transform: translateY(-1px);
 }
 
+.pill-primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.pill-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
 .site-footer {
   margin-top: 4rem;
   color: var(--muted);
