@@ -96,9 +96,10 @@ body::after {
 
 h1 {
   margin: 0.2rem 0 0.75rem;
+  padding-bottom: 0.1em;
   font-size: clamp(3rem, 8vw, 5.5rem);
   letter-spacing: -0.03em;
-  line-height: 1;
+  line-height: 1.2;
   background: linear-gradient(100deg, var(--text) 20%, var(--accent) 50%, var(--text) 80%);
   background-size: 200% auto;
   background-position: 0% 50%;
