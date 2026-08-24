@@ -2,6 +2,9 @@
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (prefersReducedMotion) return;
 
+  var hasFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (!hasFinePointer) return;
+
   var root = document.documentElement;
   var maxOffset = 40;
   var ticking = false;
